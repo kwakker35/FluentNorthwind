@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+<ItemGroup>
+    <!-- HttpClient for making HTTP requests -->
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+
+    <!-- For JSON serialization/deserialization -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+
+    <!-- Optional: For OData support, you can use Microsoft OData Client or System.Linq.Dynamic -->
+    <PackageReference Include="Microsoft.OData.Client" Version="7.11.0" />
+  </ItemGroup>
 </Project>

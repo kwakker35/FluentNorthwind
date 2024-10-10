@@ -9,3 +9,5 @@ D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind
 D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\refint\FluentNorthwind.Lib.dll
 D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.pdb
 D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\ref\FluentNorthwind.Lib.dll
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.csproj.AssemblyReference.cache
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.sourcelink.json
