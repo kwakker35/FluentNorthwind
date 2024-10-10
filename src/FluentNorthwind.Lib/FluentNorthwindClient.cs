@@ -14,6 +14,13 @@ public class FluentNorthwindClient : IDisposable
 
     public EntityQuery<Product> Products() => new EntityQuery<Product>(_httpClient, "Products");
 
+    public EntityQuery<Category> Categories() =>
+        new EntityQuery<Category>(_httpClient, "Categories");
+
+    public EntityQuery<Customer> Customers() => new EntityQuery<Customer>(_httpClient, "Customers");
+
+    public EntityQuery<Supplier> Suppliers() => new EntityQuery<Supplier>(_httpClient, "Suppliers");
+
     public void Dispose()
     {
         _httpClient.Dispose();
