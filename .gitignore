@@ -1,3 +1,52 @@
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+# Ignore NuGet restore logs
+project.assets.json
+*.props
+*.targets
+
+# Ignore user-specific files (Visual Studio or VSCode specific)
+*.user
+*.rsuser
+*.suo
+
+# Ignore Rider specific files
+.idea/
+*.sln.iml
+
+# Ignore JetBrains Rider and Visual Studio files
+.vscode/
+.vs/
+*.csproj.user
+
+# Ignore Logs and Coverage Results
+*.log
+logs/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore generated dll, pdb, and exe files
+*.dll
+*.pdb
+*.exe
+
+# Ignore publish folder
+publish/
+
+# Ignore generated class files (if any)
+*.g.cs
+*.generated.cs
+
+# Ignore other unwanted files
+Thumbs.db
+desktop.ini
+
 # Build Folders
 bin/
 obj/
@@ -105,3 +154,53 @@ TestResults/
 *.trx
 *.log
 logs/
+
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+# Ignore NuGet restore logs
+project.assets.json
+*.props
+*.targets
+
+# Ignore user-specific files (Visual Studio or VSCode specific)
+*.user
+*.rsuser
+*.suo
+
+# Ignore Rider specific files
+.idea/
+*.sln.iml
+
+# Ignore JetBrains Rider and Visual Studio files
+.vscode/
+.vs/
+*.csproj.user
+
+# Ignore Logs and Coverage Results
+*.log
+logs/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore generated dll, pdb, and exe files
+*.dll
+*.pdb
+*.exe
+
+# Ignore publish folder
+publish/
+
+# Ignore generated class files (if any)
+*.g.cs
+*.generated.cs
+
+# Ignore other unwanted files
+Thumbs.db
+desktop.ini
