@@ -74,9 +74,6 @@ public class EntityQuery<T>
         // Create JsonSerializerSettings to ignore null values
         var settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-        // Deserialize into ODataResponse
-        var oDataResponse = JsonConvert.DeserializeObject<ODataResponse<T>>(json, settings);
-
         // If the response has a value, return it; otherwise return the single item as a list
         if (json.Contains("\"value\":"))
         {
