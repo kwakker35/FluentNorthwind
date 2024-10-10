@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FluentNorthwind.Lib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3ac2479455e4a2bf21c8a4080f87f41d85b07f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddd02ee29f4193e39cd4e75a6526b32b7da41365")]
 [assembly: System.Reflection.AssemblyProductAttribute("FluentNorthwind.Lib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FluentNorthwind.Lib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

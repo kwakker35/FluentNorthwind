@@ -1,4 +1,4 @@
-public class OrderDetail
+public class Order_Detail
 {
     public int OrderID { get; set; }
     public int ProductID { get; set; }
