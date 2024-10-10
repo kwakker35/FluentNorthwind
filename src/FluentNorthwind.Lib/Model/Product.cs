@@ -14,5 +14,5 @@ public class Product
     // Navigation properties
     public Category Category { get; set; }
     public Supplier Supplier { get; set; }
-    public ICollection<OrderDetail> OrderDetails { get; set; }
+    public ICollection<Order_Detail> Order_Details { get; set; }
 }
