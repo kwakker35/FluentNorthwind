@@ -58,7 +58,20 @@ public class EntityQuery<T>
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<ODataResponse<T>>(json)?.Value;
+
+        // Deserialize into ODataResponse
+        var oDataResponse = JsonConvert.DeserializeObject<ODataResponse<T>>(json);
+
+        // If the response has a value, return it; otherwise return the single item as a list
+        if (oDataResponse.Value != null)
+        {
+            return oDataResponse.Value; // Return collection
+        }
+        else
+        {
+            // Handle single item case
+            return new List<T> { oDataResponse.Item }; // Return as IEnumerable<T>
+        }
     }
 
     private string BuildQuery()

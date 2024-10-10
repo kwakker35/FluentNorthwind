@@ -4,12 +4,12 @@
     var orders = await client.Orders().ExecuteAsync();
 
     // Get a specific order by ID
-    var order = await client.Orders().WithId(1).ExecuteAsync();
+    var order = await client.Orders().WithId(10248).ExecuteAsync();
 
     // Get order with related entities expanded
     var orderWithDetails = await client
         .Orders()
-        .WithId(1)
+        .WithId(10248)
         .Expand("OrderDetails,Customer")
         .ExecuteAsync();
 
