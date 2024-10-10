@@ -1,0 +1,11 @@
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\bin\Debug\net8.0\FluentNorthwind.Lib.deps.json
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\bin\Debug\net8.0\FluentNorthwind.Lib.dll
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\bin\Debug\net8.0\FluentNorthwind.Lib.pdb
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.AssemblyInfoInputs.cache
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.AssemblyInfo.cs
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.csproj.CoreCompileInputs.cache
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.dll
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\refint\FluentNorthwind.Lib.dll
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\FluentNorthwind.Lib.pdb
+D:\Code\FluentNorthwind\src\FluentNorthwind.Lib\obj\Debug\net8.0\ref\FluentNorthwind.Lib.dll

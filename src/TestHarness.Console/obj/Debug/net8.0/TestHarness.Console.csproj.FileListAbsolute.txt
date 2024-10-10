@@ -1,0 +1,14 @@
+D:\Code\FluentNorthwind\src\TestHarness.Console\bin\Debug\net8.0\TestHarness.Console.exe
+D:\Code\FluentNorthwind\src\TestHarness.Console\bin\Debug\net8.0\TestHarness.Console.deps.json
+D:\Code\FluentNorthwind\src\TestHarness.Console\bin\Debug\net8.0\TestHarness.Console.runtimeconfig.json
+D:\Code\FluentNorthwind\src\TestHarness.Console\bin\Debug\net8.0\TestHarness.Console.dll
+D:\Code\FluentNorthwind\src\TestHarness.Console\bin\Debug\net8.0\TestHarness.Console.pdb
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.AssemblyInfoInputs.cache
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.AssemblyInfo.cs
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.csproj.CoreCompileInputs.cache
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.dll
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\refint\TestHarness.Console.dll
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.pdb
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\TestHarness.Console.genruntimeconfig.cache
+D:\Code\FluentNorthwind\src\TestHarness.Console\obj\Debug\net8.0\ref\TestHarness.Console.dll
