@@ -6,8 +6,4 @@ public class ODataResponse<T>
     public string Context { get; set; }
 
     public List<T> Value { get; set; }
-
-    // For single item responses
-    [JsonProperty("item")]
-    public T Item { get; set; }
 }

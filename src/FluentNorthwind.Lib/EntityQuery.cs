@@ -8,6 +8,7 @@ public class EntityQuery<T>
     private string _orderBy;
     private int? _top;
     private string _expand;
+    private string _select;
 
     public EntityQuery(HttpClient httpClient, string entitySetName)
     {
@@ -51,6 +52,12 @@ public class EntityQuery<T>
         return this;
     }
 
+    public EntityQuery<T> Select(string select)
+    {
+        _select = select;
+        return this;
+    }
+
     public async Task<IEnumerable<T>> ExecuteAsync()
     {
         var query = BuildQuery();
@@ -59,18 +66,32 @@ public class EntityQuery<T>
 
         var json = await response.Content.ReadAsStringAsync();
 
+        if (string.IsNullOrEmpty(json))
+        {
+            return new List<T>();
+        }
+
+        // Create JsonSerializerSettings to ignore null values
+        var settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
         // Deserialize into ODataResponse
-        var oDataResponse = JsonConvert.DeserializeObject<ODataResponse<T>>(json);
+        var oDataResponse = JsonConvert.DeserializeObject<ODataResponse<T>>(json, settings);
 
         // If the response has a value, return it; otherwise return the single item as a list
-        if (oDataResponse.Value != null)
+        if (json.Contains("\"value\":"))
         {
-            return oDataResponse.Value; // Return collection
+            // Deserialize as a collection
+            var collectionResponse = JsonConvert.DeserializeObject<ODataResponse<T>>(
+                json,
+                settings
+            );
+            return collectionResponse.Value;
         }
         else
         {
-            // Handle single item case
-            return new List<T> { oDataResponse.Item }; // Return as IEnumerable<T>
+            // Deserialize as a single item
+            var singleItemResponse = JsonConvert.DeserializeObject<T>(json, settings);
+            return new List<T> { singleItemResponse }; // Return as IEnumerable<T>
         }
     }
 
@@ -96,6 +117,11 @@ public class EntityQuery<T>
         if (!string.IsNullOrEmpty(_expand))
         {
             query += $"$expand={_expand}&";
+        }
+
+        if (!string.IsNullOrEmpty(_select))
+        {
+            query += $"$select={System.Net.WebUtility.UrlEncode(_select)}";
         }
 
         return query.TrimEnd('&');

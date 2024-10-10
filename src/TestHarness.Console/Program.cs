@@ -10,25 +10,28 @@
     var orderWithDetails = await client
         .Orders()
         .WithId(10248)
-        .Expand("OrderDetails,Customer")
+        .Expand("Order_Details,Customer")
         .ExecuteAsync();
 
     // Get products with no stock
-    var outOfStockProducts = await client.Products().Filter("units_in_stock eq 0").ExecuteAsync();
+    var outOfStockProducts = await client.Products().Filter("UnitsInStock eq 0").ExecuteAsync();
 
     // Get employees ordered by first name
-    var employeesInOrder = await client.Employees().OrderBy("first_name").ExecuteAsync();
+    var employeesInOrder = await client.Employees().OrderBy("FirstName").ExecuteAsync();
 
     // Get employees ordered by company name in descending order
-    var employeesInDescendingOrder = await client
-        .Employees()
-        .OrderByDesc("CompanyName")
-        .ExecuteAsync();
+    var employeesInDescendingOrder = await client.Employees().OrderByDesc("City").ExecuteAsync();
 
     // Get top 10 employees ordered by last name
     var top10EmployeesInSurnameOrder = await client
         .Employees()
-        .OrderBy("last_name")
+        .OrderBy("LastName")
         .Top(10)
+        .ExecuteAsync();
+
+    // Get Employees but only certain fields
+    var basicEmployees = await client
+        .Employees()
+        .Select("FirstName, LastName, City")
         .ExecuteAsync();
 }
