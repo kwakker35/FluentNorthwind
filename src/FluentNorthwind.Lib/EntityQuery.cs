@@ -1,4 +1,8 @@
+using System.Linq.Expressions;
+using FluentNorthwind.Lib.Model;
 using Newtonsoft.Json;
+
+namespace FluentNorthwind.Lib;
 
 public class EntityQuery<T>
 {
@@ -52,10 +56,32 @@ public class EntityQuery<T>
         return this;
     }
 
-    public EntityQuery<T> Select(string select)
+    public EntityQuery<T> Select<TResult>(Expression<Func<T, TResult>> selector)
     {
-        _select = select;
-        return this;
+        // Extract property names from the lambda expression
+        var selectedProperties = new List<string>();
+
+        if (selector.Body is NewExpression newExpression)
+        {
+            foreach (var argument in newExpression.Arguments)
+            {
+                if (argument is MemberExpression memberExpression)
+                {
+                    selectedProperties.Add(memberExpression.Member.Name);
+                }
+            }
+        }
+        else if (selector.Body is MemberExpression member)
+        {
+            selectedProperties.Add(member.Member.Name);
+        }
+
+        var selectedFields = string.Join(",", selectedProperties);
+
+        // Append the $select parameter to the OData query
+        _select = selectedFields;
+
+        return this; // Return the current instance for method chaining
     }
 
     public async Task<IEnumerable<T>> ExecuteAsync()

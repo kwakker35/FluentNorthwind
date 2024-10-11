@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
 
+namespace FluentNorthwind.Lib;
+
 public class ODataResponse<T>
 {
     [JsonProperty("@odata.context")]
