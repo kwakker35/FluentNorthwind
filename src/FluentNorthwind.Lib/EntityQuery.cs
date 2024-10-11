@@ -42,7 +42,7 @@ public class EntityQuery<T>
 
     public EntityQuery<T> OrderBy(string orderBy)
     {
-        _orderBy = orderBy;
+        _orderBy = $"{orderBy} asc";
         return this;
     }
 
