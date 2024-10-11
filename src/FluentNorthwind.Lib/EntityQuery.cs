@@ -11,6 +11,7 @@ public class EntityQuery<T>
     private string _filter;
     private string _orderBy;
     private int? _top;
+    private int? _skip;
     private string _expand;
     private string _select;
     private object _id = null;
@@ -55,6 +56,12 @@ public class EntityQuery<T>
     public EntityQuery<T> Top(int top)
     {
         _top = top;
+        return this;
+    }
+
+    public EntityQuery<T> Skip(int skip)
+    {
+        _skip = skip;
         return this;
     }
 
@@ -156,6 +163,11 @@ public class EntityQuery<T>
         if (_top.HasValue)
         {
             query += $"$top={_top}&";
+        }
+
+        if (_skip.HasValue)
+        {
+            query += $"$skip={_skip}&";
         }
 
         if (!string.IsNullOrEmpty(_expand))
