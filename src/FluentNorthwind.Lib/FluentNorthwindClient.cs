@@ -14,6 +14,9 @@ public class FluentNorthwindClient : IDisposable
 
     public EntityQuery<Order> Orders() => new EntityQuery<Order>(_httpClient, "Orders");
 
+    public EntityQuery<Order> Orders(int id) =>
+        new EntityQuery<Order>(_httpClient, "Orders").WithId(id);
+
     public EntityQuery<Employee> Employees() => new EntityQuery<Employee>(_httpClient, "Employees");
 
     public EntityQuery<Product> Products() => new EntityQuery<Product>(_httpClient, "Products");
@@ -22,6 +25,9 @@ public class FluentNorthwindClient : IDisposable
         new EntityQuery<Category>(_httpClient, "Categories");
 
     public EntityQuery<Customer> Customers() => new EntityQuery<Customer>(_httpClient, "Customers");
+
+    public EntityQuery<Customer> Customers(string id) =>
+        new EntityQuery<Customer>(_httpClient, "Customers").WithId(id);
 
     public EntityQuery<Supplier> Suppliers() => new EntityQuery<Supplier>(_httpClient, "Suppliers");
 
