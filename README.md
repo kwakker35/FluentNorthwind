@@ -49,12 +49,12 @@ Console.WriteLine($"Order ID: {order.OrderId}, Customer: {order.CustomerId}");
 
 #### Fetch Order with Expanded Related Entities
 
-You can expand related entities such as `OrderDetails` or `Customer`:
+You can expand related entities such as `Order_Details` or `Customer`:
 
 ```csharp
 var orderWithDetails = await client.Orders()
                                    .WithId(10249)
-                                   .Expand("OrderDetails,Customer")
+                                   .Expand("Order_Details,Customer")
                                    .ExecuteAsync();
 
 Console.WriteLine($"Order ID: {orderWithDetails.OrderId}, Customer: {orderWithDetails.Customer.CompanyName}");
