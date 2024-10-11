@@ -6,12 +6,11 @@ using (var client = new FluentNorthwindClient())
     var orders = await client.Orders().ExecuteAsync();
 
     // Get a specific order by ID
-    var order = await client.Orders().WithId(10248).ExecuteAsync();
+    var order = await client.Orders(10248).ExecuteAsync();
 
     // Get order with related entities expanded
     var orderWithDetails = await client
-        .Orders()
-        .WithId(10248)
+        .Orders(10248)
         .Expand("Order_Details,Customer")
         .ExecuteAsync();
 
@@ -47,4 +46,7 @@ using (var client = new FluentNorthwindClient())
 
     // Get Employees but only certain fields
     var employeesCity = await client.Employees().Select(e => e.City).ExecuteAsync();
+
+    //get single customer by id
+    var customer = await client.Customers("ALFKI").ExecuteAsync();
 }

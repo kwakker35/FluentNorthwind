@@ -13,11 +13,25 @@ public class EntityQuery<T>
     private int? _top;
     private string _expand;
     private string _select;
+    private object _id = null;
 
     public EntityQuery(HttpClient httpClient, string entitySetName)
     {
         _httpClient = httpClient;
         _entitySetName = entitySetName;
+    }
+
+    public EntityQuery<T> WithId(int id)
+    {
+        _id = id;
+        return this;
+    }
+
+    // Set string Id
+    public EntityQuery<T> WithId(string id)
+    {
+        _id = id;
+        return this;
     }
 
     public EntityQuery<T> Filter(string filter)
@@ -47,12 +61,6 @@ public class EntityQuery<T>
     public EntityQuery<T> Expand(string expand)
     {
         _expand = expand;
-        return this;
-    }
-
-    public EntityQuery<T> WithId(int id)
-    {
-        _entitySetName += $"({id})";
         return this;
     }
 
@@ -120,6 +128,19 @@ public class EntityQuery<T>
 
     private string BuildQuery()
     {
+        if (_id != null)
+        {
+            // Handle numeric or string IDs
+            if (_id is int || _id is long)
+            {
+                _entitySetName += $"({_id})";
+            }
+            else if (_id is string)
+            {
+                _entitySetName += $"('{_id}')";
+            }
+        }
+
         var query = $"{_entitySetName}?";
 
         if (!string.IsNullOrEmpty(_filter))
