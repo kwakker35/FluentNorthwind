@@ -43,8 +43,14 @@ foreach (var order in orders)
 #### Fetch a Single Order by ID
 
 ```csharp
-var order = await client.Orders().WithId(10249).ExecuteAsync();
+var order = await client.Orders(10249).ExecuteAsync();
 Console.WriteLine($"Order ID: {order.OrderId}, Customer: {order.CustomerId}");
+```
+#### Fetch a Single Customer by ID
+
+```csharp
+var customer = await client.Customers("ALFKI").ExecuteAsync();
+Console.WriteLine($"Customer ID: {customer.CustomerID}, Contact Name: {customer.ContactName}");
 ```
 
 #### Fetch Order with Expanded Related Entities
@@ -52,8 +58,7 @@ Console.WriteLine($"Order ID: {order.OrderId}, Customer: {order.CustomerId}");
 You can expand related entities such as `Order_Details` or `Customer`:
 
 ```csharp
-var orderWithDetails = await client.Orders()
-                                   .WithId(10249)
+var orderWithDetails = await client.Orders(10249)
                                    .Expand("Order_Details,Customer")
                                    .ExecuteAsync();
 
@@ -79,12 +84,24 @@ You can retrieve only specific fields from an entity. For example, to fetch empl
 
 ```csharp
 var employees = await client.Employees()
-                            .Select("FirstName, LastName, City")
+                            .Select(e => new { e.FirstName, e.LastName, e.City })
                             .ExecuteAsync();
 
 foreach (var employee in employees)
 {
     Console.WriteLine($"{employee.FirstName} {employee.LastName}, City: {employee.City}");
+}
+```
+
+Get only a single field:
+```csharp
+var employeesCity = await client.Employees()
+                                .Select(e => e.City)
+                                .ExecuteAsync();
+
+foreach (var employee in employeesCity)
+{
+    Console.WriteLine($"City: {employee.City}");
 }
 ```
 
