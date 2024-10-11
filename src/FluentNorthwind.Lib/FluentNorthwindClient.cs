@@ -1,3 +1,7 @@
+using FluentNorthwind.Lib.Model;
+
+namespace FluentNorthwind.Lib;
+
 public class FluentNorthwindClient : IDisposable
 {
     private readonly string _baseUrl = "https://services.odata.org/v4/northwind/northwind.svc/";

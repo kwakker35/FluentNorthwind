@@ -1,4 +1,6 @@
-﻿using (var client = new FluentNorthwindClient())
+﻿using FluentNorthwind.Lib;
+
+using (var client = new FluentNorthwindClient())
 {
     // Get all orders
     var orders = await client.Orders().ExecuteAsync();
@@ -32,6 +34,17 @@
     // Get Employees but only certain fields
     var basicEmployees = await client
         .Employees()
-        .Select("FirstName, LastName, City")
+        .Select(
+            e =>
+                new
+                {
+                    e.FirstName,
+                    e.LastName,
+                    e.City
+                }
+        )
         .ExecuteAsync();
+
+    // Get Employees but only certain fields
+    var employeesCity = await client.Employees().Select(e => e.City).ExecuteAsync();
 }
