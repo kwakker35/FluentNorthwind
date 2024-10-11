@@ -1,3 +1,4 @@
+namespace FluentNorthwind.Lib.Model;
 public class Order_Detail
 {
     public int OrderID { get; set; }

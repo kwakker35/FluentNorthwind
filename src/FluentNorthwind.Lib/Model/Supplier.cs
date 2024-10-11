@@ -1,3 +1,4 @@
+namespace FluentNorthwind.Lib.Model;
 public class Supplier
 {
     public int SupplierID { get; set; }

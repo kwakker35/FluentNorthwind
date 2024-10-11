@@ -1,3 +1,4 @@
+namespace FluentNorthwind.Lib.Model;
 public class Category
 {
     public int CategoryID { get; set; }

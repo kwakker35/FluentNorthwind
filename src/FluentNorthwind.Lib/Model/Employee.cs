@@ -1,3 +1,5 @@
+namespace FluentNorthwind.Lib.Model;
+
 public class Employee
 {
     public int EmployeeID { get; set; }

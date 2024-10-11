@@ -1,3 +1,4 @@
+namespace FluentNorthwind.Lib.Model;
 public class Customer
 {
     public string CustomerID { get; set; }
