@@ -1,4 +1,3 @@
-
 # FluentNorthwindClient
 
 **FluentNorthwindClient** is a C# library designed to interact with the Northwind OData service in a fluent and intuitive way. It allows developers to build OData queries seamlessly using a fluent API, abstracting the complexity of URL construction and query string manipulation. The library returns strongly-typed entities and is built with a focus on maintaining SOLID and DRY principles.
@@ -11,11 +10,12 @@ The primary benefit is **readability**. Fluent APIs allow you to write code that
 
 ## Key Features of FluentNorthwindClient
 
-- **Entity Queries**: Supports querying `Orders`, `OrderDetails`, `Products`, and `Employees` from the Northwind OData service.
+- **Entity Queries**: Supports querying `Orders`, `Order_Details`, `Products`, `Customers`, `Categories`, `Suppliers` and `Employees` from the Northwind OData service.
+  - **Note:** `Order_Details` can only be accessed via the `Expand()` method, all others can be accessed directly.
 - **OData Query Support**: Fluent query building for filters, ordering, expanding related entities, selecting specific fields, and pagination using `Top`.
 - **Strongly-Typed Entities**: Results are mapped to strongly-typed C# classes, providing intellisense support and eliminating magic strings.
 - **Customizable Queries**: Build flexible and dynamic OData queries on the fly.
-  
+
 ## How to Use
 
 Here’s a quick guide on how to get started with the **FluentNorthwindClient**.
@@ -46,6 +46,7 @@ foreach (var order in orders)
 var order = await client.Orders(10249).ExecuteAsync();
 Console.WriteLine($"Order ID: {order.OrderId}, Customer: {order.CustomerId}");
 ```
+
 #### Fetch a Single Customer by ID
 
 ```csharp
@@ -94,6 +95,7 @@ foreach (var employee in employees)
 ```
 
 Get only a single field:
+
 ```csharp
 var employeesCity = await client.Employees()
                                 .Select(e => e.City)
@@ -121,22 +123,39 @@ foreach (var employee in top10Employees)
 }
 ```
 
+You can use a combination of `Top` and `Skip` methods to page the result set:
+
+```csharp
+var top3EmployeesPage2 = await client.Employees()
+                                 .OrderBy("LastName")
+                                 .Skip(3)
+                                 .Top(3)
+                                 .ExecuteAsync();
+
+foreach (var employee in top3EmployeesPage2)
+{
+    Console.WriteLine($"{employee.LastName}, {employee.FirstName}");
+}
+```
+
 ## Key Components
 
 - **`FluentNorthwindClient`**: The main entry point for interacting with the Northwind OData service.
 - **`EntityQuery<T>`**: A generic class for constructing OData queries for entities like `Orders`, `Products`, `Employees`, etc.
-- **OData Query Methods**: Supports `Filter()`, `Expand()`, `OrderBy()`, `OrderByDesc()`, `Select()`, and `Top()`.
+- **OData Query Methods**: Supports `Filter()`, `Expand()`, `OrderBy()`, `OrderByDesc()`, `Select()`, `Skip()` and `Top()`.
 
 ## How It Works
 
 FluentNorthwindClient leverages a fluent API pattern to enable chaining of query options like filters and sorting. Each method call adds to the OData query string, which is then executed via HTTP when `ExecuteAsync()` is called. The response is deserialized into strongly-typed C# objects based on the requested entity.
 
 For example, the following call:
+
 ```csharp
 var employees = await client.Employees().OrderBy("LastName").Top(10).ExecuteAsync();
 ```
 
 Will build the query:
+
 ```
 https://services.odata.org/v4/northwind/northwind.svc/Employees?$orderby=LastName&$top=10
 ```
